@@ -76,12 +76,11 @@ public class AlunoService {
 		Aluno aluno = alunoRepository.findById(id).orElseThrow(()-> 
 			new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno não cadastrado"));
 		
-		aluno.setId(alunoDto.getId());
-		aluno.setNome(alunoDto.getNome());
-		aluno.setCpf(alunoDto.getCpf());
-		aluno.setTelefone(alunoDto.getTelefone());
+		Aluno newAluno = this.alunoMapper.toEntity(alunoDto);
 		
-		Aluno alunoAtualizado = this.alunoRepository.save(aluno);
+		newAluno.setId(aluno.getId());
+		
+		Aluno alunoAtualizado = this.alunoRepository.save(newAluno);
 		AlunoDto alunoAtualizadoDto = this.alunoMapper.toDto(alunoAtualizado);
 		
 		return alunoAtualizadoDto;

@@ -15,6 +15,8 @@ public class AlunoDto {
 	private String cpf;
 	@NotNull @NotEmpty
 	private String telefone;
+	@NotNull
+	private EnderecoDto enderecoDto;
 	
 	
 	public String getNome() {
@@ -40,5 +42,11 @@ public class AlunoDto {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public EnderecoDto getEndereco() {
+		return enderecoDto;
+	}
+	public void setEndereco(EnderecoDto enderecoDto) {
+		this.enderecoDto = enderecoDto;
 	}
 }

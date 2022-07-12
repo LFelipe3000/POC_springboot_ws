@@ -1,16 +1,20 @@
 package br.com.goldsgym.cadastro.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Aluno")
 public class Aluno {
 
+	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,6 +24,10 @@ public class Aluno {
 	private String cpf;
 	@Column(name = "Telefone")
 	private String telefone;
+	
+	@OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "endereco_id")
+	private Endereco endereco;
 	
 
 	public Long getId() {
@@ -45,8 +53,14 @@ public class Aluno {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-		
 	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
