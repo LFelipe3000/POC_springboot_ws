@@ -21,7 +21,7 @@ import br.com.goldsgym.cadastro.model.dto.AlunoDto;
 import br.com.goldsgym.cadastro.service.AlunoService;
 
 @RestController
-@RequestMapping("/alunos")
+@RequestMapping("api/v1/alunos")
 public class CadastroController {
 
 	@Autowired
