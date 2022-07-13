@@ -2,7 +2,6 @@ package br.com.goldsgym.cadastro.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +23,11 @@ import br.com.goldsgym.cadastro.service.AlunoService;
 @RequestMapping("api/v1/alunos")
 public class CadastroController {
 
-	@Autowired
-	private AlunoService alunoService;
+	private final AlunoService alunoService;
+	
+	public CadastroController(AlunoService alunoService) {
+		this.alunoService = alunoService;
+	}
 	
 	@PostMapping
 	@ResponseBody
